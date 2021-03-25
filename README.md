@@ -5,7 +5,7 @@
 
 Melinda Higgins' presentation to the March 25, 2021 Meeting of the Atlanta R-Users Group.
 
-#### Website Link for Repository
+#### Website Link for this Github Repository
 
 * [https://melindahiggins2000.github.io/AtlantaRUsers_25March2021/](https://melindahiggins2000.github.io/AtlantaRUsers_25March2021/)
 
@@ -24,18 +24,20 @@ Melinda Higgins' presentation to the March 25, 2021 Meeting of the Atlanta R-Use
   - [powerpoint_ex2.Rmd (PPT example, better table)](https://github.com/melindahiggins2000/AtlantaRUsers_25March2021/blob/main/powerpoint_ex2.Rmd)
   - [powerpoint_ex3_moreslideformats.Rmd (try other formats)](https://github.com/melindahiggins2000/AtlantaRUsers_25March2021/blob/main/powerpoint_ex3_moreslideformats.Rmd)
     - [HTML More Slide Formats ioslides](https://melindahiggins2000.github.io/AtlantaRUsers_25March2021/powerpoint_ex3_moreslideformats.html#1)
-* Dashboard with `flexdashboard` package
+* Dashboard with [`flexdashboard`](https://rmarkdown.rstudio.com/flexdashboard/index.html) package
   - [penguins_dashboard.Rmd](https://github.com/melindahiggins2000/AtlantaRUsers_25March2021/blob/main/penguins_dashboard.Rmd)
   - [penguins_dashboard.html](https://melindahiggins2000.github.io/AtlantaRUsers_25March2021/penguins_dashboard.html)
-* Better HTML report - example with `prettydoc` package
+* Better HTML report - example with [`prettydoc`](https://statr.me/2016/08/creating-pretty-documents-with-the-prettydoc-package/) package
   - [htmlpretty1.Rmd](https://github.com/melindahiggins2000/AtlantaRUsers_25March2021/blob/main/htmlpretty1.Rmd)
   - [htmlpretty1.html](https://melindahiggins2000.github.io/AtlantaRUsers_25March2021/htmlpretty1.html)
-* Lots more templates with `rticles` package
+* Lots more templates with [`rticles`](https://github.com/rstudio/rticles) package
   - PNAS example [RMD](https://github.com/melindahiggins2000/AtlantaRUsers_25March2021/blob/main/PNAS%20Example/PNAS%20Example.Rmd) [PDF](https://melindahiggins2000.github.io/AtlantaRUsers_25March2021/PNAS%20Example/PNAS-Example.pdf)
 
 #### More resources - see:
 
 * Rmarkdown [https://rmarkdown.rstudio.com/](https://rmarkdown.rstudio.com/) - review all of the materials here for a great start!
+  - [Rmarkdown Formats](https://rmarkdown.rstudio.com/formats.html)
+  - [Rmarkdown Gallery](https://rmarkdown.rstudio.com/gallery.html)
 * Bookdown.org [https://bookdown.org/](https://bookdown.org/)
   - [https://bookdown.org/yihui/rmarkdown-cookbook/](https://bookdown.org/yihui/rmarkdown-cookbook/)
   - [https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/)
