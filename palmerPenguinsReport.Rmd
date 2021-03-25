@@ -1,0 +1,251 @@
+---
+title: "Cool Stats on Penguins"
+author: "Melinda Higgins"
+date: "3/24/2021"
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# set up knitr options
+# for now set options to FALSE
+# to minimize messages and warnings
+# but leave echo=TRUE to see code
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+# Note: This report will use the following packages
+# palmerpenguins
+# dplyr
+# ggplot2
+# knitr
+
+# If you want to "knit" directly to PDF
+# you should also install the tinytex package
+```
+
+## Palmer Penguins Dataset
+
+![palperpenguins logo](pplogo.png)
+
+For this report, we will be working with the "Palmer Penguins" dataset. This dataset is built into the `palmerpenguins` package.
+
+This dataset contains measurements and observations of a sample of Palmer Archipelago (Antarctica) Penguins.
+
+The data includes: Size measurements, clutch observations, and blood isotope ratios for adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. Data were collected and made available by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program.
+
+**Before you knit this report**, be sure to install these packages - go to "Tools" and choose "Install Packages" in RStudio.
+
+* palmerpenguins
+* dplyr (or tidyverse)
+* knitr
+* ggplot2 (or tidyverse)
+* tinytex (optional to knit to PDF)
+
+You can learn more about this cool dataset at:
+
+* CRAN packages, [https://cran.r-project.org/web/packages/palmerpenguins/index.html](https://cran.r-project.org/web/packages/palmerpenguins/index.html)
+* Github documentation (by Allison Horst), [https://allisonhorst.github.io/palmerpenguins/](https://allisonhorst.github.io/palmerpenguins/)
+
+```{r loaddata}
+library(palmerpenguins)
+
+# create a local dataset
+# that is a copy of the builtin penguins dataset
+ppdata <- penguins
+```
+
+## What is in this dataset?
+
+Show a summary of the variables in this dataset using the `names()` function. You can also use the `str()` structure function to get a list of the variables and what type of variables they are. 
+
+```{r varslist}
+names(ppdata)
+str(ppdata)
+```
+
+## Get summary statistics of 4 size measurements of the Penguins
+
+```{r summarystats}
+library(dplyr)
+ppdata %>%
+  select(bill_length_mm, bill_depth_mm, 
+         flipper_length_mm, body_mass_g) %>%
+  summary()
+```
+
+## Show categories for "Factor" variables: species, island and sex
+
+```{r}
+library(knitr)
+ppdata %>%
+  pull(species) %>%
+  table(useNA = "ifany") %>%
+  knitr::kable(caption = "Penguin Species")
+
+ppdata %>%
+  pull(island) %>%
+  table(useNA = "ifany") %>%
+  knitr::kable(caption = "Penguin Island Location")
+
+ppdata %>%
+  pull(sex) %>%
+  table(useNA = "ifany") %>%
+  knitr::kable(caption = "Penguin Sex")
+```
+
+## Get stats for only Adelie penguins
+
+I added `knitr::kable(caption = "Summary Stats for Adelie Penguins")` to make a prettier table with a caption title.
+
+```{r filter1}
+ppdata %>%
+  filter(species == "Adelie") %>%
+  select(bill_length_mm, bill_depth_mm, 
+         flipper_length_mm, body_mass_g) %>%
+  summary() %>%
+  knitr::kable(caption = "Summary Stats for Adelie Penguins")
+```
+
+## Get stats for the **Chinstrap** species penguins
+
+* Change the species name in the filter. 
+* Remember to update the caption title.
+
+```{r filter2}
+# Change filter(species = "Chinstrap")
+# and change 
+# knitr::kable(caption = "Summary Stats for Chinstrap Penguins")
+ppdata %>%
+  filter(species == "Chinstrap") %>%
+  select(bill_length_mm, bill_depth_mm, 
+         flipper_length_mm, body_mass_g) %>%
+  summary() %>%
+  knitr::kable(caption = "Summary Stats for Chinstrap Penguins")
+```
+
+## Get stats for the penguins on the **Dream island**
+
+* Change the filter for `island` instead of `species` and specify the "Dream" island.
+* Remember to update the caption title.
+
+```{r filter3}
+# Change filter(island = "Dream")
+# and change 
+# knitr::kable(caption = "Summary Stats for Penguins on Dream Island")
+ppdata %>%
+  filter(island == "Dream") %>%
+  select(bill_length_mm, bill_depth_mm, 
+         flipper_length_mm, body_mass_g) %>%
+  summary() %>%
+  knitr::kable(caption = "Summary Stats for Penguins on Dream Island")
+```
+
+## Let's make some plots - boxplot of `flipper_length_mm`
+
+Here is a boxplot of the flipper lengths of the penguins by species.
+
+```{r plot1}
+library(ggplot2)
+ggplot(data = ppdata,
+       aes(x = species, y = flipper_length_mm)) +
+  geom_boxplot()
+```
+
+We can make the plot a little nicer by updating the axis labels, adding a title and adding some color using the `aes` aesthetic.
+
+```{r plot2}
+ggplot(data = ppdata,
+       aes(x = species, y = flipper_length_mm)) +
+  geom_boxplot(aes(color = species)) +
+  xlab("Palmer Archipelago Penguin Species") +
+  ylab("Flipper Length (mm)") +
+  ggtitle("Flipper Length by Species")
+```
+
+## Make a boxplot of `body_mass_g` by Species
+
+Use the code above as your guide to make another boxplot of the Body Mass (in grams) for the 3 species of penguins. Set `y = body_mass_g`. Remember to update your y-axis label.
+
+```{r plot3}
+# Update y = body_mass_g
+# and update ggtitle("Body Mass (g) by Species")
+ggplot(data = ppdata,
+       aes(x = species, y = body_mass_g)) +
+  geom_boxplot(aes(color = species)) +
+  xlab("Palmer Archipelago Penguin Species") +
+  ylab("Body Mass (g)") +
+  ggtitle("Body Mass (g) by Species")
+```
+
+## Change the "geom" and make a new plot
+
+Now take the code you wrote above and change `geom_boxplot` to `geom_violin` and see what happens.
+
+```{r plot4}
+# change geom_boxplot()
+# to geom_violin(aes(color = species))
+ggplot(data = ppdata,
+       aes(x = species, y = body_mass_g)) +
+  geom_violin(aes(color = species)) +
+  xlab("Palmer Archipelago Penguin Species") +
+  ylab("Body Mass (g)") +
+  ggtitle("Body Mass (g) by Species")
+```
+
+## Make a scatterplot of body mass by flipper length
+
+```{r plot5}
+ggplot(data = ppdata,
+       aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  xlab("Flipper Length (mm)") +
+  ylab("Body Mass (grams)") +
+  ggtitle("Association between Body Mass and Flipper Length")
+```
+
+## Add best fit line
+
+Add a best fit line by adding `geom_smooth(method = lm)` which adds the "linear model" simple linear regression line.
+
+```{r plot6}
+ggplot(data = ppdata,
+       aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = lm) +
+  xlab("Flipper Length (mm)") +
+  ylab("Body Mass (grams)") +
+  ggtitle("Association between Body Mass and Flipper Length")
+```
+
+## Add panels or facets by species
+
+```{r plot7}
+ggplot(data = ppdata,
+       aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = lm) +
+  xlab("Flipper Length (mm)") +
+  ylab("Body Mass (grams)") +
+  ggtitle("Association between Body Mass and Flipper Length") +
+  facet_wrap(~ species)
+```
+
+## or color points and lines by species
+
+```{r plot8}
+ggplot(data = ppdata,
+       aes(x = flipper_length_mm, y = body_mass_g,
+           color = species)) +
+  geom_point() +
+  geom_smooth(method = lm) +
+  xlab("Flipper Length (mm)") +
+  ylab("Body Mass (grams)") +
+  ggtitle("Association between Body Mass and Flipper Length")
+```
+
