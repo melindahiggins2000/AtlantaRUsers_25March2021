@@ -37,3 +37,9 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# other folders to ignore
+/extras
+/css
+/img
+/libs

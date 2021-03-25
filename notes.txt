@@ -1,0 +1,8 @@
+
+
+Reproducibility with the Rmarkdown/Knitr Ecosystem
+
+AtlantaRUsers_25March2021
+
+creative commons license
+
