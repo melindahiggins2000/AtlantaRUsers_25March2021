@@ -11,8 +11,8 @@
 
 #### Slides Presented:
 
-* PPT format [HigginsMelinda_AtlantaRUsers_Reproducibility_25March2021.v2.pptx]()
-* PDF format [HigginsMelinda_AtlantaRUsers_Reproducibility_25March2021.v2.pdf]()
+* PPT format [HigginsMelinda_AtlantaRUsers_Reproducibility_25March2021.v2.pptx](https://github.com/melindahiggins2000/AtlantaRUsers_25March2021/raw/main/HigginsMelinda_AtlantaRUsers_Reproducibility_25March2021.v2.pptx)
+* PDF format [HigginsMelinda_AtlantaRUsers_Reproducibility_25March2021.v2.pdf](https://melindahiggins2000.github.io/AtlantaRUsers_25March2021/HigginsMelinda_AtlantaRUsers_Reproducibility_25March2021.v2.pdf)
 
 #### Rmarkdown files presented:
 
